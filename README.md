@@ -21,8 +21,8 @@ Example of use:
 
 Class Customer
   
-  DATA oModel    AS Object
-  ...
+  DATA oModel AS Object 
+  
 EndClass
 
 *****************************************************************
