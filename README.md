@@ -20,9 +20,11 @@ After that, we have to create an method responsable to recover the Model Object.
 Example of use:
 
 Class Customer
+  
   DATA oModel    AS Object
-  ....
+  ...
 EndClass
+
 *****************************************************************
 
 Method New(oDriver) Class Customer
@@ -51,10 +53,10 @@ Example using SQLRDD:
 * To inject the dependencies of Model Class, as shown above.
 
 oCustomer:= Customer():New(SR_GetConnection())
-/*
+
 * Now we can call any of Methods avaiable: all, find, create, save, update and delete. Using the method that
 * we have created in the Customer model class.
-*/
+
 
 * Method all, retrieve all records from mapped table in an two-dimensional array
 oCustomer:toModel():all() 
