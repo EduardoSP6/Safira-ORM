@@ -28,15 +28,17 @@ EndClass
 *****************************************************************
 
 Method New(oDriver) Class Customer
-	* constructor method - dependency injection from ORM Model
-	
-	::oModel:= Model():New(Self, 'tb_caixa', oDriver, "SQLRDD")
+
+* constructor method - dependency injection from ORM Model
+::oModel:= Model():New(Self, 'tb_caixa', oDriver, "SQLRDD")
 	
 Return Self
 
 *****************************************************************
 Method toModel() Class Customer
-	* return model to access those methods externally
+
+* return model to access those methods externally
+
 Return ::oModel
 
 *****************************************************************
