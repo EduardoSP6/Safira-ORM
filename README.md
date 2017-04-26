@@ -8,6 +8,7 @@ It has RDD support: SqlRdd and ADO, for a while.
 It works with hash tables in the 90% to manipulate the data.
 Easy to integrate with your software.
 
+* Copyright 2017 Eduardo P. Sales <eduardo.sp6@gmail.com>
 
 Integration:
 
