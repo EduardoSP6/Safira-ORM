@@ -14,19 +14,18 @@ Integration:
 
 In your model class, create an data like bellow to save the Model Object. After, in the constructor method,
 build an instance of Model Class passing the instance of current object (CUSTOMER), the name of table, the instance of
-database connection and at last, the name of RDD.
+database connection and the name of RDD.
 
 After that, we have to create an method responsable to recover the Model Object. And it's done! :)
 
 Example of use:
 
+*****************************************************************
 Class Customer
   
   DATA oModel AS Object 
   
 EndClass
-
-*****************************************************************
 
 Method New(oDriver) Class Customer
 
