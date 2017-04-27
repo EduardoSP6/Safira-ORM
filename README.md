@@ -4,11 +4,14 @@ Safira ORM is a kind of microframework for xHarbour, with the aim of help xHarbo
 Based on the principles of relational object mapping (ORM), makes the developers have more productivity
 in the development of their software, since it is not necessary to worry so much about transactions with the database.
 
-It has RDD support: SqlRdd and ADO, for a while.
-It works with hash tables in the 90% to manipulate the data.
-Easy to integrate with your software.
+Features:
 
-* Copyright 2017 Eduardo P. Sales <eduardo.sp6@gmail.com>
+* Databases suported: Mysql/Mariadb.
+* RDD's supported: SqlRdd and ADO.
+* Increase in production using hash tables.
+* Easy to integrate with your software.
+
+* Copyright 2017. Author: Eduardo P. Sales   <eduardo.sp6@gmail.com>
 
 Integration:
 
