@@ -4,13 +4,15 @@
 #include "database.ch"
 #include "error.ch"
 #include "adordd.ch"
+#include "sqlrdd.ch"
+#include "mysql.ch"
+#include "sqlodbc.ch"
 
 ********************************************************************************
 * Class : QueryBuilder from Safira ORM library - perform SQL instructions to database
 * Date  : 18/04/2017
 * Author: Eduardo P. Sales
 ********************************************************************************
-
 
 Class QueryBuilder
 
@@ -36,8 +38,9 @@ Class QueryBuilder
 	Method setTable()
 	
 	Method create() 
-	Method select(strColumns, lforUpdate, cConditional)
+	Method select(strColumns, lforUpdate, cConditional, cOrder)
 	Method where()
+	Method orderBy()
 	Method insert(aColmun, aData)
 	Method update(aData)
 	Method delete(id, cConditional)
@@ -251,7 +254,7 @@ Method create() Class QueryBuilder
 return aRecord
 
 ********************************************************************************
-Method select(strColumns, lforUpdate, cConditional) Class QueryBuilder
+Method select(strColumns, lforUpdate, cConditional, cOrder) Class QueryBuilder
 	// perform SQL Select instruction	
 
 	local cColumns, oRecordSet 
@@ -263,7 +266,7 @@ Method select(strColumns, lforUpdate, cConditional) Class QueryBuilder
 	
 	
 	// build SQL instruction	
-	::cQuery:= "SELECT "+ cColumns +" FROM "+ ::getTable() + ::where(cConditional)
+	::cQuery:= "SELECT "+ cColumns +" FROM "+ ::getTable() + ::where(cConditional) + ::orderBy(cOrder)
 
 	::cQuery+= if(::lforUpdate, " FOR UPDATE", "")
 	
@@ -298,6 +301,13 @@ Return aResult
 Method where(cConditional) Class QueryBuilder
 	
 	local cExp:= if(cConditional != nil, " WHERE "+ cConditional, "")
+		
+Return cExp
+
+********************************************************************************
+Method orderBy(cOrder) Class QueryBuilder
+	
+	local cExp:= if(cOrder != nil, " ORDER BY "+ cOrder, "")
 		
 Return cExp
 

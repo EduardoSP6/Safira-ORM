@@ -2,7 +2,6 @@
 #include "common.ch"
 #include "objects.ch"
 #include "error.ch"
-#include "adordd.ch"
 
 ********************************************************************************
 * Class : Model from Safira ORM library
@@ -29,7 +28,7 @@ Class Model
 	Method getTable() 
 	Method setTable(cTableName) 
 
-	Method all()
+	Method all(cOrder)
 	Method find(id) 
 	Method create()
 	Method save(aData)
@@ -86,18 +85,16 @@ Method setTable(cTableName) Class Model
 Return nil
 
 ********************************************************************************
-Method all() Class Model
+Method all(cOrder) Class Model
 	// retrieve an array of all records from the model table
 
-	local oError, oRecordSet, cMsgErro:= cQuery:= ""
 	local aArray:= {}
-	local aResult, aRecord
 	
 	if ::objQuery == nil
 		return aArray
 	endif
 	
-	aArray:= ::objQuery:select()	
+	aArray:= ::objQuery:select(,,, cOrder)	
 			
 Return aArray
 
