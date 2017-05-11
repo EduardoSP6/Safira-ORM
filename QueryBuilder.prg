@@ -591,7 +591,7 @@ Method bindParams(aParams) Class QueryBuilder
 	local listBinded:= ""
 		
 	for i:= 1 to len(aParams)
-		listBinded += "?" + if(i>= len(aParams), "", ", ")
+		listBinded += "?" + if(i >= len(aParams), "", ", ")
 	next
 	
 Return listBinded
