@@ -50,7 +50,6 @@ Class QueryBuilder
 	Method getNewId()
 	Method arrayToList(aArray, cDelimiter, lValue)
 	Method formatDate2SQL(dData, lDateTime)
-	Method bindParams(aParams)
 	Method cValueToSQL(uData)
 		
 	Error Handler ShowError()
@@ -582,19 +581,6 @@ Method formatDate2SQL(dData, lDateTime) Class QueryBuilder
 	endif
 	
 return fDate
-
-********************************************************************************
-Method bindParams(aParams) Class QueryBuilder
-	// used to bind the parameters to execute insert or update sql instructions
-	// return a list containing the parameters binded
-	
-	local listBinded:= ""
-		
-	for i:= 1 to len(aParams)
-		listBinded += "?" + if(i >= len(aParams), "", ", ")
-	next
-	
-Return listBinded
 
 ********************************************************************************
 Method cValueToSQL(uData) Class QueryBuilder
