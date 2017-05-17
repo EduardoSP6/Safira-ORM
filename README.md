@@ -14,7 +14,7 @@ Features:
 * Easy to integrate with your software.
 
 
-Integration:
+##Integration:
 
 In your model class, create an data like bellow to save the Model Object. After, in the constructor method,
 build an instance of Model Class passing the instance of current object (CUSTOMER), the name of table, the instance of
@@ -74,7 +74,7 @@ oCustomer:toModel():create()
 * Method find, returns a hash table with the record found in database according to the id passed by parameter.
 oCustomer:toModel:find(id) 
 
-*	Method save, insert in table a new record. The parameter is an hash table having the same structure that create method returns.
+// Method save, insert in table a new record. The parameter is an hash table having the same structure that create method returns.
 oCustomer:toModel:save(aHash) 
 	
 *	This method updates an record in database. The parameter is an hash table having the same structure that create method returns.
