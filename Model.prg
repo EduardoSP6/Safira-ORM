@@ -85,7 +85,7 @@ Method setTable(cTableName) Class Model
 Return nil
 
 ********************************************************************************
-Method all(cOrder) Class Model
+Method all(cCols, cOrder) Class Model
 	// retrieve an array of all records from the model table
 
 	local aArray:= {}
@@ -94,7 +94,7 @@ Method all(cOrder) Class Model
 		return aArray
 	endif
 	
-	aArray:= ::objQuery:select(,,, cOrder)	
+	aArray:= ::objQuery:select(cCols,,, cOrder)	
 			
 Return aArray
 
