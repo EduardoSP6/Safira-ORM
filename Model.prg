@@ -14,16 +14,11 @@ Class Model
 	Data table
 	Data aScope INIT hash()    // array of table model fields
 	Data dbInstance AS Object  // connection instance object
-	Data modelName  AS String  // Class name of model
 	Data rddName    AS String  init "SQLRDD"
-	Data objModel   AS Object
 	Data objQuery   AS Object
 	Data lautoInc   AS Logical init .F.
 	 
 	Method New() Constructor
-	
-	Method setModel() 
-	Method getModel()
 	
 	Method getTable() 
 	Method setTable(cTableName) 
@@ -40,14 +35,11 @@ Class Model
 EndClass
 
 ********************************************************************************
-Method New(oModel, tableName, conInstance, cRddName) Class Model
+Method New(tableName, conInstance, cRddName) Class Model
 	
 	// build instance of object
 	
-	::rddName:= if(cRddName != nil, Upper(cRddName), ::rddName) // indicate the RDD Name
-	
-	::objModel   := oModel // instance of mapped model class
-	::modelName  := oModel:ClassName() // name of model class
+	::rddName    := if(cRddName != nil, Upper(cRddName), ::rddName) // indicate the RDD Name
 	::dbInstance := conInstance  // instance of database connection object
 
 	::setTable( tableName ) // set table mapped name
@@ -60,17 +52,6 @@ Method New(oModel, tableName, conInstance, cRddName) Class Model
 	::lautoInc:= ::objQuery:autoIncrement // property that indicates if primary key is auto increment
 	
 Return Self
-
-********************************************************************************
-Method getModel() Class Model
-	// retrieve the model object
-Return ::objModel	
-
-********************************************************************************
-Method setModel(oModel) Class Model
-	// set model object
-	::objModel:= oModel
-Return nil		
 
 ********************************************************************************
 Method getTable() Class Model
