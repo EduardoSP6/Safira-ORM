@@ -22,8 +22,8 @@ database connection and the name of RDD.
 
 After that, we have to create an method responsable to recover the Model Object. And it's done! :)
 
+*****************************************************************
 Example of use:
-
 *****************************************************************
 Class Customer
   
@@ -35,7 +35,7 @@ Method New(oDriver) Class Customer
 
 * constructor method - dependency injection from ORM Model
 
-::oModel:= Model():New('tb_caixa', oDriver, "SQLRDD")
+::oModel:= Model():New('tb_customers', oDriver, "SQLRDD")
 	
 Return Self
 
