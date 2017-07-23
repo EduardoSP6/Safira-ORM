@@ -316,7 +316,7 @@ Method insert(aColumn, aData) Class QueryBuilder
 	   perform an SQL Insert instruction
 	   aData -> hash table containing the column name and value	
 	*/
-	local listColumn, listValues, nCnn, oError, oRecordSet
+	local listColumn, listValues, oError, oRecordSet
 	
 	if len(aData) == 0 .OR. len(aColumn) == 0
 		return .f.
@@ -336,8 +336,6 @@ Method insert(aColumn, aData) Class QueryBuilder
 	
 	if ::rddName == "SQLRDD"
 
-		nCnn := SR_GetActiveConnection()
-
 		SR_BeginTransaction()   
 
 		Try
@@ -350,9 +348,6 @@ Method insert(aColumn, aData) Class QueryBuilder
 			//::ShowError()
 			return .f.
 	   End
-	   
-      SR_EndConnection( nCnn )   
-
 	   
 	elseif ::rddName $ "ADO"
 
@@ -379,7 +374,7 @@ Method update(aData) Class QueryBuilder
 	// perform an SQL Update instruction	
 	// param aData -> hash table with field names and its value
 	
-	local oValue, oKey, posKey, nCnn, oRecordSet
+	local oValue, oKey, posKey, oRecordSet
 	
 			
 	// build SQL query to be performed
@@ -407,13 +402,10 @@ Method update(aData) Class QueryBuilder
   	
 	// insert the where clausure to update the record by id
   	::cQuery+= " WHERE "+ ::getPrimaryKey() +" = '"+ cValtoStr(HGetValueAt(aData, posKey)) +"'"
-  	
-
+	
 	// execute the SQL instuction according to the RDD used 				
 	
 	if ::rddName == "SQLRDD"
-
-		nCnn := SR_GetActiveConnection()
 
 		SR_BeginTransaction()   
 
@@ -427,9 +419,6 @@ Method update(aData) Class QueryBuilder
 			//::ShowError()
 			return .f.
 	   End
-	   
-      SR_EndConnection( nCnn )   
-
 	   
 	elseif ::rddName $ "ADO"
 
@@ -456,7 +445,7 @@ Method delete(id, cConditional) Class QueryBuilder
 	// perform an SQL delete instruction
 	// By default, deletes an record by identifier equals parameter id. 
 	// However, it's possible to inform an condicional in second parameter	
-	local nCnn, oRecordSet
+	local oRecordSet
 	
 	if id == nil .AND. cConditional == nil
 		return .f.
@@ -472,8 +461,6 @@ Method delete(id, cConditional) Class QueryBuilder
 	
 	if ::rddName == "SQLRDD"
 	
-		nCnn := SR_GetActiveConnection()
-
 		SR_BeginTransaction()   
 
 		Try
@@ -486,9 +473,6 @@ Method delete(id, cConditional) Class QueryBuilder
 			//::ShowError()
 			return .f.
 		End 
-
-      SR_EndConnection( nCnn )   
-
 	   
 	elseif ::rddName $ "ADO"
 

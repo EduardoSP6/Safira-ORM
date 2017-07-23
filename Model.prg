@@ -66,8 +66,8 @@ Method setTable(cTableName) Class Model
 Return nil
 
 ********************************************************************************
-Method all(cCols, cOrder) Class Model
-	// retrieve an array of all records from the model table
+Method all(cCols, cWhere, cOrder) Class Model
+	// retrieve an array of all records from the model table, in hash format
 
 	local aArray:= {}
 	
@@ -75,7 +75,7 @@ Method all(cCols, cOrder) Class Model
 		return aArray
 	endif
 	
-	aArray:= ::objQuery:select(cCols,,, cOrder)	
+	aArray:= ::objQuery:select(cCols, .f., cWhere, cOrder)	
 			
 Return aArray
 
@@ -97,12 +97,12 @@ Method find(id) Class Model
 		for i:= 1 to len(aArray)
 			for x:= 1 to len(::aScope)
 			
-				HSet( aRecord, ::aScope[Alltrim(Str(x))]['field'], cValtoChar(aArray[i,x]) )
+				HSet( aRecord, ::aScope[Alltrim(Str(x))]['field'], aArray[i,x] )
 			   
 			next
 		next
 	endif
-
+	
 Return aRecord
 
 ********************************************************************************
