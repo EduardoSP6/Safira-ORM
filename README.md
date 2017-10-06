@@ -28,7 +28,9 @@ Example of use:
 Class Customer
   
   DATA oModel AS Object 
+  
   Method New() CONSTRUCTOR
+  
 EndClass
 
 Method New(oDriver) Class Customer
